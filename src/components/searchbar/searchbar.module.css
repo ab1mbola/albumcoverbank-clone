@@ -1,41 +1,204 @@
 .searchbar-container {
-  margin: 0 auto;
-  /* background: red; */
-  width: 50rem;
+  margin: 2.5rem auto 1.5rem;
+  width: 100%;
+  max-width: 44rem;
+  position: relative;
+  transition: var(--transition-smooth);
 }
 
 .searchbar {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
   position: relative;
-  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2.5rem;
+  padding: 0.4rem 0.6rem 0.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-bounce);
+}
+
+.searchbar:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  color: var(--text-primary);
+  opacity: 0.4;
+  margin-right: 0.75rem;
 }
 
 .searchbar input {
-  background: #f7f7f7;
-    border: 2px solid #d2d2d2;
-    border-radius: 1rem;
-    box-sizing: border-box;
-    /* font-family: .SearchBar input inter-family; */
-    font-size: 1rem;
-    height: 3rem;
-    padding: 0 5rem;
-    width: 100%;
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-primary);
+  outline: none;
+  font-weight: 500;
+  height: 2.5rem;
 }
 
-.searchbar svg {
-  position: absolute;
+.searchbar input::placeholder {
+  color: var(--text-primary);
+  opacity: 0.45;
+}
+
+.clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  opacity: 0.5;
   cursor: pointer;
-  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-right: 0.25rem;
+  transition: var(--transition-smooth);
 }
 
-.searchbar svg:nth-child(1) {
-  /* cursor: pointer; */
-  left: 1rem;
+.clear-btn:hover {
+  opacity: 1;
+  color: var(--accent-color);
 }
 
-.searchbar svg:nth-child(3) {
-  /* cursor: pointer; */
-  right: 1rem;
+.filter-toggle {
+  background: var(--bg-secondary);
+  border: none;
+  color: var(--text-secondary);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+}
 
+.filter-toggle:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.filter-toggle.active {
+  background: var(--text-secondary);
+  color: #fff;
+}
+
+/* Advanced Filters Drawer */
+.filters-drawer {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  right: 0;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-section {
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-opt {
+  background: var(--bg-secondary);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-opt:hover {
+  background: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.filter-opt.selected {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+.drawer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.reset-link {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  opacity: 0.6;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.reset-link:hover {
+  opacity: 1;
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.apply-btn {
+  background: var(--text-secondary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+}
+
+.apply-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-1px);
 }
