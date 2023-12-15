@@ -4,7 +4,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
-const GENRES = ["Afrobeat", "Highlife", "Juju", "Afropop", "Reggae", "Jazz", "Hip-Hop"];
+const GENRES = ["Afrobeat", "Highlife", "Juju", "Afropop", "Reggae", "Jazz", "Hip-Hop", "R&B", "Pop", "Rock", "Electronic", "Soul", "Disco", "Folk"];
 const ERAS = [
   { label: "1970s", query: "1970-1979" },
   { label: "1980s", query: "1980-1989" },
