@@ -36,7 +36,7 @@ const INITIAL_SUBMISSIONS = [
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [albums, setAlbums] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const offsetRef = useRef(0);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
@@ -88,7 +88,7 @@ function App() {
       if (!accessToken) return;
       if (isFetchingRef.current) return;
 
-      const currentOffset = reset ? 0 : offset;
+      const currentOffset = reset ? 0 : offsetRef.current;
 
       // Prevent duplicate fetches for the same offset and configuration
       if (!reset && currentOffset === lastOffsetRef.current) return;
@@ -126,25 +126,27 @@ function App() {
 
           if (reset) {
             setAlbums(items);
-            setOffset(PAGE_SIZE);
+            offsetRef.current = PAGE_SIZE;
           } else {
             setAlbums((prev) => [...prev, ...items]);
-            setOffset(currentOffset + PAGE_SIZE);
+            offsetRef.current = currentOffset + PAGE_SIZE;
           }
 
-          // If we received fewer items than requested, we've hit the end
-          setHasMore(items.length === PAGE_SIZE);
+          // If we received fewer items than requested or hit an empty page, we've hit the end
+          setHasMore(items.length === PAGE_SIZE && items.length > 0);
         } else {
           console.error("API error fetching covers");
+          setHasMore(false); // Stop trying to infinite scroll if the API hits a limit or throws error
         }
       } catch (error) {
         console.error("Network error fetching covers:", error);
+        setHasMore(false); // Stop trying to fetch on network errors
       } finally {
         setLoading(false);
         isFetchingRef.current = false;
       }
     },
-    [accessToken, offset, activeQuery, activeGenre, activeEra]
+    [accessToken, activeQuery, activeGenre, activeEra]
   );
 
   // Trigger initial load when access token is loaded
