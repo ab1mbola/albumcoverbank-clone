@@ -19,7 +19,7 @@ const INITIAL_SUBMISSIONS = [
     designer: "Lemi Ghariokwu",
     year: "1976",
     genre: "Afrobeat",
-    imageUrl: "https://i.scdn.co/image/ab67616d0000b273468532402120005a9163013b",
+    imageUrl: "/zombie.png",
     isSubmitted: true,
   },
   {
@@ -28,7 +28,7 @@ const INITIAL_SUBMISSIONS = [
     designer: "Bob Group",
     year: "1973",
     genre: "Afrobeat",
-    imageUrl: "https://i.scdn.co/image/ab67616d0000b2734a7495444855734280540131",
+    imageUrl: "/gentleman.png",
     isSubmitted: true,
   },
 ];

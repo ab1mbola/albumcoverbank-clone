@@ -10,7 +10,7 @@ const PRESET_COVERS = [
   {
     name: "Afro-Temple",
     artist: "Gideon Alabi",
-    url: "https://i.scdn.co/image/ab67616d0000b273468532402120005a9163013b",
+    url: "/zombie.png",
   },
   {
     name: "Golden Highlife Sessions",
