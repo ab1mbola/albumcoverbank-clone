@@ -102,14 +102,19 @@ function App() {
         const isFiltering = query || genre || era;
 
         if (!isFiltering) {
-          // Default: fetch new releases
-          endpoint = `https://api.spotify.com/v1/browse/new-releases?limit=${PAGE_SIZE}&offset=${currentOffset}`;
+          // Default landing feed: strictly target classic & modern Nigerian album archives
+          const q = 'genre:"afrobeat" OR genre:"highlife" OR genre:"juju" OR genre:"nigerian pop" OR "nigerian" OR "nigeria"';
+          endpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=album&limit=${PAGE_SIZE}&offset=${currentOffset}`;
         } else {
-          // Filtered Search: construct advanced Spotify search query
-          let q = "";
-          if (query) q += query;
-          if (genre) q += `${q ? " " : ""}genre:"${genre.toLowerCase()}"`;
-          if (era) q += `${q ? " " : ""}year:${era}`;
+          // Filtered Search: construct advanced Spotify search query restricted to Nigerian music
+          let searchTerms = [];
+          if (query) searchTerms.push(query);
+          if (genre) searchTerms.push(`genre:"${genre.toLowerCase()}"`);
+          if (era) searchTerms.push(`year:${era}`);
+          
+          // Guarantee that the search remains within the Nigerian archive scope
+          searchTerms.push('(genre:"afrobeat" OR genre:"highlife" OR genre:"juju" OR genre:"nigerian pop" OR "nigerian" OR "nigeria")');
+          const q = searchTerms.join(" AND ");
           
           endpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=album&limit=${PAGE_SIZE}&offset=${currentOffset}`;
         }

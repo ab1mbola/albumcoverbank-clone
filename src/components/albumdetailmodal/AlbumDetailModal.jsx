@@ -68,8 +68,18 @@ const AlbumDetailModal = ({ album, accessToken, onClose }) => {
   };
 
   const displayDesigner = getDesignerCredit();
+  const getDynamicGenre = () => {
+    if (album.genre) return album.genre;
+    const titleLower = displayName.toLowerCase();
+    const artistLower = displayArtist.toLowerCase();
+    if (artistLower.includes("ebo taylor") || artistLower.includes("highlife") || titleLower.includes("highlife")) return "Highlife";
+    if (artistLower.includes("ade") || artistLower.includes("obey") || artistLower.includes("juju")) return "Juju";
+    if (artistLower.includes("fela") || artistLower.includes("africa 70") || artistLower.includes("tony allen") || artistLower.includes("afrobeat")) return "Afrobeat";
+    return "Afrobeats";
+  };
+
+  const displayGenre = getDynamicGenre();
   const displayYear = album.year || (album.release_date ? album.release_date.split("-")[0] : "N/A");
-  const displayGenre = album.genre || "Afrobeats";
 
   // Pre-configured rich descriptions of covers to feel highly premium
   const getDesignerStory = () => {
@@ -140,8 +150,29 @@ const AlbumDetailModal = ({ album, accessToken, onClose }) => {
                 <span className={styles.badge}>{displayGenre}</span>
                 <span className={styles.year}>{displayYear}</span>
               </div>
-              <h2 className={styles.title}>{displayName}</h2>
-              <h3 className={styles.artist}>by {displayArtist}</h3>
+              <h2 className={styles.title}>
+                <a
+                  href={album.external_urls?.spotify || `https://www.google.com/search?q=${encodeURIComponent(displayArtist + " " + displayName + " album")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles["source-link"]}
+                  title="View original album source"
+                >
+                  {displayName}
+                </a>
+              </h2>
+              <h3 className={styles.artist}>
+                by{" "}
+                <a
+                  href={(album.artists && album.artists[0]?.external_urls?.spotify) || `https://www.google.com/search?q=${encodeURIComponent(displayArtist)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles["source-link"]}
+                  title="View artist profile"
+                >
+                  {displayArtist}
+                </a>
+              </h3>
             </div>
 
             <div className={styles["designer-section"]}>
