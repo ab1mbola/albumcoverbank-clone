@@ -10,17 +10,17 @@ const PRESET_COVERS = [
   {
     name: "Afro-Temple",
     artist: "Gideon Alabi",
-    url: "https://images.unsplash.com/photo-1546074177-3e1b6a7a57c9?q=80&w=600&auto=format&fit=crop",
+    url: "https://i.scdn.co/image/ab67616d0000b273468532402120005a9163013b",
   },
   {
     name: "Golden Highlife Sessions",
     artist: "Ebo Taylor Orchestra",
-    url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
+    url: "https://i.scdn.co/image/ab6761610000e5eb5b141d30d14fb78458dac5ce",
   },
   {
     name: "Sun and Rhythms",
     artist: "The Lijadu Sisters",
-    url: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop",
+    url: "https://i.scdn.co/image/ab67706c0000da84ebbd4e10b7e3bbc47a09293f",
   },
 ];
 

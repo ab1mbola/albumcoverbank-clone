@@ -19,7 +19,7 @@ const INITIAL_SUBMISSIONS = [
     designer: "Lemi Ghariokwu",
     year: "1976",
     genre: "Afrobeat",
-    imageUrl: "https://images.unsplash.com/photo-1546074177-3e1b6a7a57c9?q=80&w=600&auto=format&fit=crop",
+    imageUrl: "https://i.scdn.co/image/ab67616d0000b273468532402120005a9163013b",
     isSubmitted: true,
   },
   {
@@ -28,7 +28,7 @@ const INITIAL_SUBMISSIONS = [
     designer: "Bob Group",
     year: "1973",
     genre: "Afrobeat",
-    imageUrl: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600&auto=format&fit=crop",
+    imageUrl: "https://i.scdn.co/image/ab67616d0000b2734a7495444855734280540131",
     isSubmitted: true,
   },
 ];
