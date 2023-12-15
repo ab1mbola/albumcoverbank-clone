@@ -7,8 +7,8 @@ import SubmitModal from "./components/submitmodal/SubmitModal";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
-const CLIENT_ID = "YOUR_SPOTIFY_CLIENT_ID";
-const CLIENT_SECRET = "YOUR_SPOTIFY_CLIENT_SECRET";
+const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID || "YOUR_SPOTIFY_CLIENT_ID";
+const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET || "YOUR_SPOTIFY_CLIENT_SECRET";
 const PAGE_SIZE = 20;
 
 // Curated beautiful initial community album covers to showcase Nigerian/African art immediately
