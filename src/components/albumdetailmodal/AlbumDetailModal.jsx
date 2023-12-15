@@ -75,7 +75,7 @@ const AlbumDetailModal = ({ album, accessToken, onClose }) => {
     if (artistLower.includes("ebo taylor") || artistLower.includes("highlife") || titleLower.includes("highlife")) return "Highlife";
     if (artistLower.includes("ade") || artistLower.includes("obey") || artistLower.includes("juju")) return "Juju";
     if (artistLower.includes("fela") || artistLower.includes("africa 70") || artistLower.includes("tony allen") || artistLower.includes("afrobeat")) return "Afrobeat";
-    return "Afrobeats";
+    return "Official Release";
   };
 
   const displayGenre = getDynamicGenre();
